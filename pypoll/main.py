@@ -2,69 +2,52 @@
 import os
 import csv
 
+
+
+#set path for file
 election_datapath = os.path.join("election_data_1.csv") #,os.path.join("election_data_2.csv")
+
+election_dict = []
 
 #open csv files reading data into dictionary
 with open(election_datapath, newline="") as csvfile:
-     election_data = csv.reader(csvfile, delimiter=',')
+     election_data = csv.DictReader(csvfile, delimiter=",")
     
+     for row in election_data:
+         voter_ID = row["Voter ID"]
+         county = row["County"]
+         candidate = row["Candidate"]
+         election_dict.append(
+             {
+                 "Voter ID": row["Voter ID"],
+                 "County": row["County"],
+                 "Candidate": row["Candidate"]
+             }
+         )
+    # for candidate in election_data:
+    #     print(list.index(candidate))
 
-#make dictionary to store candidates
-candidates = {}
 
-# Skip the first line because it contains the headers.
-next(csvfile)
+   
+from collections import Counter
+candidatelist = []
+for canditate in election_data:
+    candidatelist.append(name)
 
-# Loop through the rows of the csv
-    for row in csvreader:
-    
-    # Pull the candidate name for the row
-        candidate = row[2]
+    #print(Counter())
 
-        # If there are no votes for the candidate, add to the dictionary with 1 vote
-        if candidate not in candidates:
-            candidates[candidate] = 1
-        # Else increment the votes by 1    
-        else:
-            numvotes = 1 + candidates[candidate]
-            candidates[candidate] = numvotes
-        
-    # Loop through dictionary to total votes 
-    totalVotes = 0
-    maxVotes = 0
+    #print("Total Votes: ", (str(total_votes))
+    #print("--------------------------------")
 
-    for person in candidates:
-        totalVotes += candidates[person]
-        if candidates[person] > maxVotes:
-            winner = person
-            maxVotes = candidates[person]
+# for key, value in election_dict : 
+#     print (key,value)
 
-    # Print results
-    print("Election Results")
-    print("-" * 25)
-    print(f'Total Votes: {totalVotes}')
-    print("-" * 25)
-    # Use a loop since we're printing data on each element in the candidate dictionary
-    for candidate in candidates:
-        print(f'{candidate}: {round(100*candidates[candidate]/totalVotes,1)}% ({candidates[candidate]})')
-    print("-" * 25)
-    print(f'Winner: {winner}')
-    print("-" * 25)
 
-# Define where to print the election results 
-output_file = os.path.join('PyPoll','election_results.txt')
+# Get a count of votes by candidate 
+#candidate_votes
+# votePercent = round(int(candidate_votes/total_votes)*100),2)
 
-# Write into  output_file 
-with open(output_file, "w", newline='') as datafile:
+# # Print out the candidate's name and their percentage of votes 
+# print(candidate + votePercent + candidate_votes)
 
-    # Write the results to the txt file
-    print("Election Results", file = datafile)
-    print("-" * 25, file = datafile)
-    print(f'Total Votes: {totalVotes}', file = datafile)
-    print("-" * 25, file = datafile)
-    # Use a loop since we're writing data on each element in the candidate dictionary
-    for candidate in candidates:
-        print(f'{candidate}: {round(100*candidates[candidate]/totalVotes,1)}% ({candidates[candidate]})', file = datafile)
-    print("-" * 25, file = datafile)
-    print(f'Winner: {winner}', file = datafile)
-    print("-" * 25, file = datafile)
+# #claim winner (conditionals)
