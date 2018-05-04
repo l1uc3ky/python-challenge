@@ -16,15 +16,21 @@ print("-------------------------------------------")
 from collections import Counter
 wordcounts = []
 
-# #define sentences 
+# define and count sentences 
 sentences = patxt.split('.')
-
-# #Loop through sentences to count words
-# for sentence in sentences: 
-#     words = sentence.split(' ')
-#     wordcounts.append(len(words))
+print("total sentences: ", patxt.count('.'))
 
 
+#Loop through sentences to count words
+for sentence in sentences: 
+    words = sentence.split(' ')
+    wordcounts.append(len(words))
+
+#check point 
+print(wordcounts)
+print(sum(wordcounts))
+
+#
 
 
 # # import re
