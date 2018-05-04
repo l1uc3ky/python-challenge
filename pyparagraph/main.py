@@ -18,7 +18,8 @@ wordcounts = []
 
 # define and count sentences 
 sentences = patxt.split('.')
-print("total sentences: ", patxt.count('.'))
+sent_count = patxt.count('.')
+print("total sentences: ", sent_count)
 
 
 #Loop through sentences to count words
@@ -30,8 +31,6 @@ for sentence in sentences:
 print(wordcounts)
 print(sum(wordcounts))
 
-#
-
-
-# # import re
-# # re.split("(?&lt;=[.!?]) +", paragraph)
+#calculate average sentence length in words 
+avg_sentlen = sum(wordcounts)/sent_count
+print(str(avg_sentlen))
