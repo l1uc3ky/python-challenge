@@ -6,7 +6,7 @@ fname = open("paragraph_1.txt", "r")
 patxt = fname.read()
 
 #check if file read 
-print(patxt)
+#print(patxt)
 
 #title activity 
 print("Paragraph Analysis")
@@ -19,7 +19,7 @@ wordcounts = []
 # define and count sentences 
 sentences = patxt.split('.')
 sent_count = patxt.count('.')
-print("total sentences: ", sent_count)
+print("Approximate Sentence Count: ", sent_count)
 
 
 #Loop through sentences to count words 
@@ -34,17 +34,17 @@ for sentence in sentences:
     lettercount = len(letters)
 
 #check point 
-print(lettercount)
-print(wordcounts)
-print(total_words)
+#print(lettercount)
+#print(wordcounts)
+print("Approximate Word Count: ", total_words)
 
 #calculate average sentence length in words 
 avg_sentlen = (sum(wordcounts)/sent_count)
-print(str(avg_sentlen))
+print("Average Sentence Length: " + str(avg_sentlen))
 
 #calculate average letter count per word
 avg_wordlen = lettercount/total_words
-print(str(avg_wordlen))
+print("Average Letter COunt: " + str(avg_wordlen))
 
 
 
