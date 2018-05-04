@@ -27,6 +27,7 @@ import re
 for sentence in sentences: 
     words = sentence.split(' ')
     wordcounts.append(len(words))
+    total_words = sum(wordcounts)
 
 # and get count for letters in passage
     letters = [letter for letter in patxt]
@@ -35,13 +36,15 @@ for sentence in sentences:
 #check point 
 print(lettercount)
 print(wordcounts)
-print(sum(wordcounts))
+print(total_words)
 
 #calculate average sentence length in words 
-avg_sentlen = sum(wordcounts)/sent_count
+avg_sentlen = (sum(wordcounts)/sent_count)
 print(str(avg_sentlen))
 
 #calculate average letter count per word
+avg_wordlen = lettercount/total_words
+print(str(avg_wordlen))
 
 
 
